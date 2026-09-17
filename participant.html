@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Participant — Key Expressions Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="flashcards.css">
+</head>
+<body>
+<nav class="nav"><a href="index.html">ホーム</a>
+<a href="participant.html" aria-current="page">Good Participant</a>
+<a href="leader.html">Discussion Leader</a>
+<a href="summarizer.html">Summarizer</a>
+<a href="monitor.html">Language Monitor</a>
+<a href="timekeeper.html">Time Keeper and Organizer</a></nav>
+<header>
+  <h1>Key Expressions: Good Participant</h1>
+  <p>よい参加者（全員） — 日本語を読んで、英語でどう言うか考えてからカードをタップしましょう。</p>
+</header>
+
+<div class="filters" id="filters" role="group" aria-label="カテゴリー"></div>
+
+<div class="status"><span id="counter"></span><span id="remaining"></span></div>
+<div class="bar"><i id="bar"></i></div>
+
+<div class="card" id="card" tabindex="0" role="button" aria-label="カードをめくる">
+  <span class="context" id="context"></span>
+  <p class="jp" id="jp"></p>
+  <p class="en" id="en"></p>
+  <p class="hint">タップして英語を見る ▸</p>
+</div>
+
+<div class="actions">
+  <button class="primary show" id="showBtn">英語を見る</button>
+  <div class="grade">
+    <button class="again" id="againBtn">もう一度 (Again)</button>
+    <button class="good" id="goodBtn">覚えた (Got it)</button>
+  </div>
+</div>
+
+<div class="tools">
+  <button id="shuffleBtn">シャッフル</button>
+  <button id="resetBtn">最初から</button>
+</div>
+
+<div class="done" id="done">
+  <h2>Finished!</h2>
+  <p id="doneMsg"></p>
+  <div class="actions" style="margin:0"><button class="primary" id="restartBtn">もう一度練習する</button></div>
+</div>
+
+<script>
+const DECK = {
+  "cats": {
+    "dont": "①わからないとき",
+    "checkMe": "②自分の理解を確認",
+    "checkYou": "③相手の理解を確認",
+    "ack": "④誤解を認める",
+    "rephrase": "⑤言い直す"
+  },
+  "cards": [
+    {
+      "c": "dont",
+      "ctx": "相手の話の要点がつかめないとき（丁寧）",
+      "jp": "あなたの言いたいことが、よくわかりません。",
+      "en": "I'm not sure I fully understand what you're trying to say."
+    },
+    {
+      "c": "dont",
+      "ctx": "相手の発言の意味を正確に知りたいとき",
+      "jp": "それは、正確にはどういう意味ですか？",
+      "en": "What exactly do you mean by that?"
+    },
+    {
+      "c": "dont",
+      "ctx": "もう少し詳しく説明してほしいとき",
+      "jp": "それについて、もう少し説明してもらえますか？",
+      "en": "Could you explain a bit more what you mean by that?"
+    },
+    {
+      "c": "dont",
+      "ctx": "聞き取れなかったとき（丁寧）",
+      "jp": "すみません、もう一度言ってもらえますか？",
+      "en": "I'm sorry, but could you repeat that?"
+    },
+    {
+      "c": "dont",
+      "ctx": "意味を尋ねるとき（カジュアル）",
+      "jp": "どういう意味ですか？",
+      "en": "What do you mean?"
+    },
+    {
+      "c": "dont",
+      "ctx": "知らない言葉が出てきたとき",
+      "jp": "〜って何ですか？",
+      "en": "What is …?"
+    },
+    {
+      "c": "dont",
+      "ctx": "一言で聞き返すとき",
+      "jp": "え、何ですか？（もう一度お願いします）",
+      "en": "Pardon?"
+    },
+    {
+      "c": "dont",
+      "ctx": "聞き返すとき（カジュアル）",
+      "jp": "もう一度言ってもらえますか？",
+      "en": "Could you say that again?"
+    },
+    {
+      "c": "dont",
+      "ctx": "最後の言葉だけ聞き逃したとき",
+      "jp": "すみません、最後の言葉は何でしたか？",
+      "en": "Sorry, what was the last word?"
+    },
+    {
+      "c": "checkMe",
+      "ctx": "自分の理解を確認するとき（丁寧・長め）",
+      "jp": "私の理解が正しければ、あなたが言っているのは〜ということですね。",
+      "en": "If I understand you correctly, what you're saying is that …"
+    },
+    {
+      "c": "checkMe",
+      "ctx": "間違っていたら直してほしいと前置きするとき",
+      "jp": "間違っていたら直してほしいのですが、〜と言っているようですね。",
+      "en": "Correct me if I'm wrong, but you seem to be saying that …"
+    },
+    {
+      "c": "checkMe",
+      "ctx": "相手の意図をまとめて確認するとき",
+      "jp": "正しく理解できていれば、〜という意味ですね。",
+      "en": "If I've understood correctly, you mean …"
+    },
+    {
+      "c": "checkMe",
+      "ctx": "短く意味を確認するとき",
+      "jp": "〜ということですか？",
+      "en": "Do you mean …?"
+    },
+    {
+      "c": "checkMe",
+      "ctx": "相手の主張を確認するとき",
+      "jp": "〜と言っているのですか？",
+      "en": "Are you saying …?"
+    },
+    {
+      "c": "checkMe",
+      "ctx": "聞き取った内容を確認するとき",
+      "jp": "〜と言いましたか？",
+      "en": "Did you say …?"
+    },
+    {
+      "c": "checkMe",
+      "ctx": "確認して同意を求めるとき（カジュアル）",
+      "jp": "つまり〜ということですよね？",
+      "en": "So, you mean …, right?"
+    },
+    {
+      "c": "checkMe",
+      "ctx": "自分のまとめが合っているか聞くとき",
+      "jp": "これで合っていますか？",
+      "en": "Have I got this right?"
+    },
+    {
+      "c": "checkYou",
+      "ctx": "一言で相手の理解を確認するとき",
+      "jp": "いいですか？（わかりましたか？）",
+      "en": "Okay?"
+    },
+    {
+      "c": "checkYou",
+      "ctx": "説明が伝わったか確認するとき",
+      "jp": "わかりましたか？（はっきりしていますか？）",
+      "en": "Is that clear?"
+    },
+    {
+      "c": "checkYou",
+      "ctx": "話についてきているか確認するとき",
+      "jp": "ついてきていますか？",
+      "en": "Are you with me?"
+    },
+    {
+      "c": "checkYou",
+      "ctx": "自分の発言が理解されたか確認するとき",
+      "jp": "私が言ったこと、わかりましたか？",
+      "en": "Could you understand what I said?"
+    },
+    {
+      "c": "checkYou",
+      "ctx": "言いたいことが伝わったか確認するとき",
+      "jp": "私の言いたいこと、わかりますか？",
+      "en": "Do you get what I mean?"
+    },
+    {
+      "c": "ack",
+      "ctx": "誤解されたと気づいたとき",
+      "jp": "すみません、それは私が言いたかったことと少し違います。",
+      "en": "I'm sorry, that isn't quite what I meant."
+    },
+    {
+      "c": "ack",
+      "ctx": "自分の説明不足を認めるとき",
+      "jp": "私の説明がわかりにくかったかもしれません。",
+      "en": "Perhaps I haven't made myself clear."
+    },
+    {
+      "c": "ack",
+      "ctx": "誤解があると丁寧に指摘するとき",
+      "jp": "少し誤解があるようです。",
+      "en": "I'm afraid there seems to be a slight misunderstanding."
+    },
+    {
+      "c": "rephrase",
+      "ctx": "別の言い方で説明し直すとき",
+      "jp": "別の言い方をしますね。",
+      "en": "Let me put it another way."
+    },
+    {
+      "c": "rephrase",
+      "ctx": "言いたかったことを説明し直すとき",
+      "jp": "私が言おうとしていたのは〜です。",
+      "en": "What I was trying to say was …"
+    },
+    {
+      "c": "rephrase",
+      "ctx": "本当の意図を伝え直すとき",
+      "jp": "私が言いたかったのは〜です。",
+      "en": "What I meant was …"
+    },
+    {
+      "c": "rephrase",
+      "ctx": "言い直す前の一言（やや丁寧）",
+      "jp": "言い直させてください。",
+      "en": "Allow me to rephrase that."
+    }
+  ]
+};
+</script>
+<script src="flashcards.js"></script>
+</body>
+</html>

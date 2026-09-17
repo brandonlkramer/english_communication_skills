@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Monitor — Key Expressions Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="flashcards.css">
+</head>
+<body>
+<nav class="nav"><a href="index.html">ホーム</a>
+<a href="participant.html">Good Participant</a>
+<a href="leader.html">Discussion Leader</a>
+<a href="summarizer.html">Summarizer</a>
+<a href="monitor.html" aria-current="page">Language Monitor</a>
+<a href="timekeeper.html">Time Keeper and Organizer</a></nav>
+<header>
+  <h1>Key Expressions: Language Monitor</h1>
+  <p>ランゲージ・モニター（言語係） — 日本語を読んで、英語でどう言うか考えてからカードをタップしましょう。</p>
+</header>
+
+<div class="filters" id="filters" role="group" aria-label="カテゴリー"></div>
+
+<div class="status"><span id="counter"></span><span id="remaining"></span></div>
+<div class="bar"><i id="bar"></i></div>
+
+<div class="card" id="card" tabindex="0" role="button" aria-label="カードをめくる">
+  <span class="context" id="context"></span>
+  <p class="jp" id="jp"></p>
+  <p class="en" id="en"></p>
+  <p class="hint">タップして英語を見る ▸</p>
+</div>
+
+<div class="actions">
+  <button class="primary show" id="showBtn">英語を見る</button>
+  <div class="grade">
+    <button class="again" id="againBtn">もう一度 (Again)</button>
+    <button class="good" id="goodBtn">覚えた (Got it)</button>
+  </div>
+</div>
+
+<div class="tools">
+  <button id="shuffleBtn">シャッフル</button>
+  <button id="resetBtn">最初から</button>
+</div>
+
+<div class="done" id="done">
+  <h2>Finished!</h2>
+  <p id="doneMsg"></p>
+  <div class="actions" style="margin:0"><button class="primary" id="restartBtn">もう一度練習する</button></div>
+</div>
+
+<script>
+const DECK = {
+  "cats": {
+    "help": "①言い方を聞く",
+    "english": "②英語を使うように促す"
+  },
+  "cards": [
+    {
+      "c": "help",
+      "ctx": "英語での言い方を尋ねるとき（カジュアル）",
+      "jp": "〜って英語でどう言いますか？",
+      "en": "How do you say …?"
+    },
+    {
+      "c": "help",
+      "ctx": "英語での言い方をグループに尋ねるとき",
+      "jp": "〜は英語でどう言えばいいですか？",
+      "en": "How can we say … in English?"
+    },
+    {
+      "c": "english",
+      "ctx": "日本語を使っているメンバーに注意するとき",
+      "jp": "すみませんが、ディスカッション中は日本語を話さないでください。",
+      "en": "Excuse me, but please don't speak Japanese during the discussion."
+    },
+    {
+      "c": "english",
+      "ctx": "英語で言い直すようお願いするとき",
+      "jp": "それを英語で言ってもらえますか？",
+      "en": "Could you say that in English, please?"
+    }
+  ]
+};
+</script>
+<script src="flashcards.js"></script>
+</body>
+</html>

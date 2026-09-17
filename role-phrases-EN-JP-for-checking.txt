@@ -1,0 +1,31 @@
+Key Expressions for Discussion Roles – new decks (Leader, Summarizer, Language Monitor, Time Keeper/Organizer)
+English | 日本語 | 文脈メモ
+
+=== Discussion Leader（ディスカッション・リーダー）===
+1. Good morning / Hello, everyone. | おはようございます／こんにちは、みなさん。 | ディスカッションの最初にグループへあいさつ
+2. Our task / topic is … | 私たちの課題（テーマ）は〜です。 | 今日の課題やテーマを伝えるとき
+3. Here's what we have to do. We're supposed to … | やることはこうです。私たちは〜することになっています。 | やるべきことを説明するとき
+4. So, let's get started, shall we? | では、始めましょうか。 | 話し合いを始める合図
+5. How about you? What do you think about this topic? | あなたはどうですか？このテーマについてどう思いますか？ | メンバーに意見を求めるとき（基本）
+6. What's your view / position on this topic? | このテーマについて、あなたの見方（立場）はどうですか？ | メンバーの見方・立場を聞くとき
+7. What's your opinion about this topic? | このテーマについて、あなたの意見は？ | メンバーの意見を聞くとき
+8. Sorry, that's all the time we have. Thanks, everyone, for a good discussion. | すみません、時間になりました。みなさん、よい話し合いをありがとうございました。 | 時間切れを伝えて締めくくるとき
+
+=== Summarizer（サマライザー（まとめ役））===
+9. I'm sorry, could you say that again, please? | すみません、もう一度言っていただけますか？ | メモが追いつかず、もう一度言ってほしいとき
+10. I'm sorry, could you speak more slowly, please? | すみません、もう少しゆっくり話していただけますか？ | 話すスピードが速すぎるとき
+11. Our group said that … | 私たちのグループは〜と言いました。 | グループの意見をクラスに報告するとき
+12. Our group discussed … | 私たちのグループは〜について話し合いました。 | 話し合った内容をクラスに報告するとき
+
+=== Language Monitor（ランゲージ・モニター（言語係））===
+13. How do you say …? | 〜って英語でどう言いますか？ | 英語での言い方を尋ねるとき（カジュアル）
+14. How can we say … in English? | 〜は英語でどう言えばいいですか？ | 英語での言い方をグループに尋ねるとき
+15. Excuse me, but please don't speak Japanese during the discussion. | すみませんが、ディスカッション中は日本語を話さないでください。 | 日本語を使っているメンバーに注意するとき
+16. Could you say that in English, please? | それを英語で言ってもらえますか？ | 英語で言い直すようお願いするとき
+
+=== Time Keeper and Organizer（タイムキーパー／オーガナイザー）===
+17. This part is going on for too long. Let's move on for now and come back to it if we still have time. | この部分に時間がかかりすぎています。いったん先に進んで、時間があれば戻りましょう。 | ひとつの話題に時間がかかりすぎているとき
+18. We're a bit short on time, so we need to pick up the pace a little. | 少し時間が足りないので、もう少しペースを上げましょう。 | 時間が足りないのでペースを上げたいとき
+19. We only have a minute left, so we need to wrap up. | あと1分しかないので、まとめに入りましょう。 | 残り1分を知らせるとき
+20. Sorry to interrupt, but we have to stop now. | 話の途中ですみませんが、ここで止めなければなりません。 | 話の途中で止めるとき（丁寧）
+21. Time's up. | 時間です。 | 時間切れを一言で知らせるとき

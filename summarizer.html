@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summarizer — Key Expressions Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="flashcards.css">
+</head>
+<body>
+<nav class="nav"><a href="index.html">ホーム</a>
+<a href="participant.html">Good Participant</a>
+<a href="leader.html">Discussion Leader</a>
+<a href="summarizer.html" aria-current="page">Summarizer</a>
+<a href="monitor.html">Language Monitor</a>
+<a href="timekeeper.html">Time Keeper and Organizer</a></nav>
+<header>
+  <h1>Key Expressions: Summarizer</h1>
+  <p>サマライザー（まとめ役） — 日本語を読んで、英語でどう言うか考えてからカードをタップしましょう。</p>
+</header>
+
+<div class="filters" id="filters" role="group" aria-label="カテゴリー"></div>
+
+<div class="status"><span id="counter"></span><span id="remaining"></span></div>
+<div class="bar"><i id="bar"></i></div>
+
+<div class="card" id="card" tabindex="0" role="button" aria-label="カードをめくる">
+  <span class="context" id="context"></span>
+  <p class="jp" id="jp"></p>
+  <p class="en" id="en"></p>
+  <p class="hint">タップして英語を見る ▸</p>
+</div>
+
+<div class="actions">
+  <button class="primary show" id="showBtn">英語を見る</button>
+  <div class="grade">
+    <button class="again" id="againBtn">もう一度 (Again)</button>
+    <button class="good" id="goodBtn">覚えた (Got it)</button>
+  </div>
+</div>
+
+<div class="tools">
+  <button id="shuffleBtn">シャッフル</button>
+  <button id="resetBtn">最初から</button>
+</div>
+
+<div class="done" id="done">
+  <h2>Finished!</h2>
+  <p id="doneMsg"></p>
+  <div class="actions" style="margin:0"><button class="primary" id="restartBtn">もう一度練習する</button></div>
+</div>
+
+<script>
+const DECK = {
+  "cats": {
+    "regulate": "①相手の話し方を調整する",
+    "report": "②クラスに報告する"
+  },
+  "cards": [
+    {
+      "c": "regulate",
+      "ctx": "メモが追いつかず、もう一度言ってほしいとき",
+      "jp": "すみません、もう一度言っていただけますか？",
+      "en": "I'm sorry, could you say that again, please?"
+    },
+    {
+      "c": "regulate",
+      "ctx": "話すスピードが速すぎるとき",
+      "jp": "すみません、もう少しゆっくり話していただけますか？",
+      "en": "I'm sorry, could you speak more slowly, please?"
+    },
+    {
+      "c": "report",
+      "ctx": "グループの意見をクラスに報告するとき",
+      "jp": "私たちのグループは〜と言いました。",
+      "en": "Our group said that …"
+    },
+    {
+      "c": "report",
+      "ctx": "話し合った内容をクラスに報告するとき",
+      "jp": "私たちのグループは〜について話し合いました。",
+      "en": "Our group discussed …"
+    }
+  ]
+};
+</script>
+<script src="flashcards.js"></script>
+</body>
+</html>

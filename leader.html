@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discussion Leader — Key Expressions Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="flashcards.css">
+</head>
+<body>
+<nav class="nav"><a href="index.html">ホーム</a>
+<a href="participant.html">Good Participant</a>
+<a href="leader.html" aria-current="page">Discussion Leader</a>
+<a href="summarizer.html">Summarizer</a>
+<a href="monitor.html">Language Monitor</a>
+<a href="timekeeper.html">Time Keeper and Organizer</a></nav>
+<header>
+  <h1>Key Expressions: Discussion Leader</h1>
+  <p>ディスカッション・リーダー — 日本語を読んで、英語でどう言うか考えてからカードをタップしましょう。</p>
+</header>
+
+<div class="filters" id="filters" role="group" aria-label="カテゴリー"></div>
+
+<div class="status"><span id="counter"></span><span id="remaining"></span></div>
+<div class="bar"><i id="bar"></i></div>
+
+<div class="card" id="card" tabindex="0" role="button" aria-label="カードをめくる">
+  <span class="context" id="context"></span>
+  <p class="jp" id="jp"></p>
+  <p class="en" id="en"></p>
+  <p class="hint">タップして英語を見る ▸</p>
+</div>
+
+<div class="actions">
+  <button class="primary show" id="showBtn">英語を見る</button>
+  <div class="grade">
+    <button class="again" id="againBtn">もう一度 (Again)</button>
+    <button class="good" id="goodBtn">覚えた (Got it)</button>
+  </div>
+</div>
+
+<div class="tools">
+  <button id="shuffleBtn">シャッフル</button>
+  <button id="resetBtn">最初から</button>
+</div>
+
+<div class="done" id="done">
+  <h2>Finished!</h2>
+  <p id="doneMsg"></p>
+  <div class="actions" style="margin:0"><button class="primary" id="restartBtn">もう一度練習する</button></div>
+</div>
+
+<script>
+const DECK = {
+  "cats": {
+    "greet": "①あいさつ",
+    "announce": "②課題・テーマの発表",
+    "startd": "③開始",
+    "ask": "④意見を聞く",
+    "end": "⑤終了"
+  },
+  "cards": [
+    {
+      "c": "greet",
+      "ctx": "ディスカッションの最初にグループへあいさつ",
+      "jp": "おはようございます／こんにちは、みなさん。",
+      "en": "Good morning / Hello, everyone."
+    },
+    {
+      "c": "announce",
+      "ctx": "今日の課題やテーマを伝えるとき",
+      "jp": "私たちの課題（テーマ）は〜です。",
+      "en": "Our task / topic is …"
+    },
+    {
+      "c": "announce",
+      "ctx": "やるべきことを説明するとき",
+      "jp": "やることはこうです。私たちは〜することになっています。",
+      "en": "Here's what we have to do. We're supposed to …"
+    },
+    {
+      "c": "startd",
+      "ctx": "話し合いを始める合図",
+      "jp": "では、始めましょうか。",
+      "en": "So, let's get started, shall we?"
+    },
+    {
+      "c": "ask",
+      "ctx": "メンバーに意見を求めるとき（基本）",
+      "jp": "あなたはどうですか？このテーマについてどう思いますか？",
+      "en": "How about you? What do you think about this topic?"
+    },
+    {
+      "c": "ask",
+      "ctx": "メンバーの見方・立場を聞くとき",
+      "jp": "このテーマについて、あなたの見方（立場）はどうですか？",
+      "en": "What's your view / position on this topic?"
+    },
+    {
+      "c": "ask",
+      "ctx": "メンバーの意見を聞くとき",
+      "jp": "このテーマについて、あなたの意見は？",
+      "en": "What's your opinion about this topic?"
+    },
+    {
+      "c": "end",
+      "ctx": "時間切れを伝えて締めくくるとき",
+      "jp": "すみません、時間になりました。みなさん、よい話し合いをありがとうございました。",
+      "en": "Sorry, that's all the time we have. Thanks, everyone, for a good discussion."
+    }
+  ]
+};
+</script>
+<script src="flashcards.js"></script>
+</body>
+</html>

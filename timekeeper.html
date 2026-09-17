@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Keeper and Organizer — Key Expressions Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="flashcards.css">
+</head>
+<body>
+<nav class="nav"><a href="index.html">ホーム</a>
+<a href="participant.html">Good Participant</a>
+<a href="leader.html">Discussion Leader</a>
+<a href="summarizer.html">Summarizer</a>
+<a href="monitor.html">Language Monitor</a>
+<a href="timekeeper.html" aria-current="page">Time Keeper and Organizer</a></nav>
+<header>
+  <h1>Key Expressions: Time Keeper and Organizer</h1>
+  <p>タイムキーパー／オーガナイザー — 日本語を読んで、英語でどう言うか考えてからカードをタップしましょう。</p>
+</header>
+
+<div class="filters" id="filters" role="group" aria-label="カテゴリー"></div>
+
+<div class="status"><span id="counter"></span><span id="remaining"></span></div>
+<div class="bar"><i id="bar"></i></div>
+
+<div class="card" id="card" tabindex="0" role="button" aria-label="カードをめくる">
+  <span class="context" id="context"></span>
+  <p class="jp" id="jp"></p>
+  <p class="en" id="en"></p>
+  <p class="hint">タップして英語を見る ▸</p>
+</div>
+
+<div class="actions">
+  <button class="primary show" id="showBtn">英語を見る</button>
+  <div class="grade">
+    <button class="again" id="againBtn">もう一度 (Again)</button>
+    <button class="good" id="goodBtn">覚えた (Got it)</button>
+  </div>
+</div>
+
+<div class="tools">
+  <button id="shuffleBtn">シャッフル</button>
+  <button id="resetBtn">最初から</button>
+</div>
+
+<div class="done" id="done">
+  <h2>Finished!</h2>
+  <p id="doneMsg"></p>
+  <div class="actions" style="margin:0"><button class="primary" id="restartBtn">もう一度練習する</button></div>
+</div>
+
+<script>
+const DECK = {
+  "cats": {
+    "faster": "①進行を速める",
+    "wrap": "②終わりが近いと知らせる",
+    "stop": "③時間切れ"
+  },
+  "cards": [
+    {
+      "c": "faster",
+      "ctx": "ひとつの話題に時間がかかりすぎているとき",
+      "jp": "この部分に時間がかかりすぎています。いったん先に進んで、時間があれば戻りましょう。",
+      "en": "This part is going on for too long. Let's move on for now and come back to it if we still have time."
+    },
+    {
+      "c": "faster",
+      "ctx": "時間が足りないのでペースを上げたいとき",
+      "jp": "少し時間が足りないので、もう少しペースを上げましょう。",
+      "en": "We're a bit short on time, so we need to pick up the pace a little."
+    },
+    {
+      "c": "wrap",
+      "ctx": "残り1分を知らせるとき",
+      "jp": "あと1分しかないので、まとめに入りましょう。",
+      "en": "We only have a minute left, so we need to wrap up."
+    },
+    {
+      "c": "stop",
+      "ctx": "話の途中で止めるとき（丁寧）",
+      "jp": "話の途中ですみませんが、ここで止めなければなりません。",
+      "en": "Sorry to interrupt, but we have to stop now."
+    },
+    {
+      "c": "stop",
+      "ctx": "時間切れを一言で知らせるとき",
+      "jp": "時間です。",
+      "en": "Time's up."
+    }
+  ]
+};
+</script>
+<script src="flashcards.js"></script>
+</body>
+</html>
